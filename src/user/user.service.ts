@@ -34,11 +34,22 @@ export class UserService {
       role: 'User',
     },
   ];
+  constructor() {}
   getAllUsersQuery(role?: 'Admin' | 'User' | 'Owner') {
     if (role) {
       const filteredUsers = this.users.filter((u) => u.role === role);
       return filteredUsers;
     }
     return this.users;
+  }
+  getUserById(id: number) {
+    const user = this.users.find((u) => u.id === id);
+    return user;
+  }
+  createUser(user: { id: number; name: string; email: string; role: string }) {
+    const dataCount = this.users.length;
+    user.id = dataCount + 1;
+    this.users.push(user);
+    return user.id;
   }
 }

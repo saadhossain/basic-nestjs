@@ -7,4 +7,6 @@ import { UserService } from './user.service';
   controllers: [UserController],
   imports: [],
 })
-export class UserModule {}
+export class UserModule {
+  constructor() {}
+}
